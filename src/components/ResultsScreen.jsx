@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import PixelIcon from './PixelIcon'
 import { useSession } from '../store/SessionContext'
 import { saveRecommendations } from '../services/db'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -295,7 +296,7 @@ export default function ResultsScreen() {
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-2xl mb-8 bg-green-primary/8 border border-green-primary/25 rounded-[24px] p-6 flex items-start gap-5"
         >
-          <div className="text-3xl mt-0.5">🎯</div>
+          <div className="text-3xl mt-0.5"><PixelIcon name="target" size={30} /></div>
           <div className="flex-1">
             <p className="font-semibold text-green-dark mb-1">
               Your top matches are all in the same field — can we narrow it down?
@@ -316,7 +317,7 @@ export default function ResultsScreen() {
             onClick={() => setSuggestedCluster(null)}
             className="text-text-muted hover:text-green-dark text-lg leading-none mt-0.5"
             aria-label="Dismiss"
-          >✕</button>
+          ><PixelIcon name="cross" size={22} /></button>
         </motion.div>
       )}
 
@@ -335,7 +336,7 @@ export default function ResultsScreen() {
       
       {error && (
         <div className="bg-red-500/10 p-6 rounded-2xl border border-red-500/20 max-w-2xl text-center mb-8">
-          <p className="text-red-600 font-medium mb-2">⚠️ {error}</p>
+          <p className="text-red-600 font-medium mb-2">{error}</p>
           <p className="text-sm text-red-500/80">Check that your VITE_API_URL in Vercel points to your Render backend (with https:// and no trailing slash). Then trigger a Manual Deploy on Render.</p>
           <p className="text-xs text-red-400/70 mt-2 font-mono">API URL being used: {import.meta.env.VITE_API_URL || 'http://127.0.0.1:8000 (local)'}</p>
         </div>
@@ -350,7 +351,7 @@ export default function ResultsScreen() {
               initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
               className="bg-green-primary rounded-[32px] p-10 text-ivory shadow-2xl relative overflow-hidden"
             >
-              <div className="absolute -right-12 -top-12 text-[200px] opacity-5 font-black leading-none select-none">✦</div>
+              <div className="absolute -right-12 -top-12 opacity-5 select-none"><PixelIcon name="spark" size={180} /></div>
               <p className="text-xs uppercase tracking-widest font-bold text-sage mb-4">Your AI Career Analysis</p>
               <p className="text-xl leading-relaxed font-light text-ivory/95 relative z-10">{comprehensiveData.overall_analysis}</p>
             </motion.div>

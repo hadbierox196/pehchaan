@@ -1,24 +1,25 @@
 import { useState } from 'react'
 import { useSession } from '../store/SessionContext'
 import { recordResponse, updateSessionProgress } from '../services/db'
+import PixelIcon from './PixelIcon'
 import { useNavigate } from 'react-router-dom'
 
 const SCENARIOS = [
   {
     id: 'A',
-    emoji: '🏙️',
+    icon: 'city',
     title: 'The Sustainable City',
     prompt: 'You are designing a new city from scratch. What one unconventional transportation system would you build at its core — and why would people actually use it? Walk through how it works.',
   },
   {
     id: 'B',
-    emoji: '💡',
+    icon: 'lightbulb',
     title: 'The School Problem',
     prompt: 'Dropout rates at a rural school have doubled in one year. You have a small budget and three months. Design a practical intervention that would actually work in that context.',
   },
   {
     id: 'C',
-    emoji: '🔧',
+    icon: 'wrench',
     title: 'The Power Outage',
     prompt: 'A city’s power grid has failed. Emergency services are running on generators. You’re the lead crisis coordinator. What are your first three decisions and why?',
   },
@@ -101,7 +102,7 @@ export default function CreativeProblemSolver() {
 
       <div className="flex flex-col items-center p-10 bg-soft-white rounded-[32px] shadow-2xl border border-border-glass max-w-2xl w-full mx-auto">
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-4xl">{scenario.emoji}</span>
+          <PixelIcon name={scenario.icon} size={42} />
           <h2 className="text-3xl font-medium tracking-tight">Creative Problem Solver</h2>
         </div>
         <p className="text-xs uppercase tracking-widest text-text-muted mb-8 font-semibold">

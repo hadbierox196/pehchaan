@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useSession } from '../store/SessionContext'
 import { recordResponse, updateSessionProgress } from '../services/db'
+import PixelIcon from './PixelIcon'
 import { useNavigate } from 'react-router-dom'
 
 const SCENARIOS = [
@@ -112,7 +113,7 @@ export default function EmpathyScenario() {
       <div className="flex flex-col items-center p-10 bg-soft-white rounded-[32px] shadow-2xl border border-border-glass max-w-2xl w-full mx-auto">
         {/* Header */}
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-4xl">🧬</span>
+          <PixelIcon name="dna" size={42} />
           <h2 className="text-3xl font-medium tracking-tight">Empathy Scenario</h2>
         </div>
         <p className="text-xs uppercase tracking-widest text-text-muted mb-8 font-semibold">

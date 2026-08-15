@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import Navbar from './Navbar'
+import PixelIcon from './PixelIcon'
 
 const games = [
-  { title: 'Memory Match', desc: 'Test how sharply you recall details.', icon: '/pixel-icons/iconbook.svg', path: '/memory-game' },
-  { title: 'Pattern Hunter', desc: 'Spot the logic hiding in a sequence.', icon: '/pixel-icons/iconchart.svg', path: '/pattern-hunter' },
-  { title: 'Decision Lab', desc: 'Trade-offs under pressure, gamified.', icon: '/pixel-icons/iconscales.svg', path: '/decision-lab' },
-  { title: 'Career Simulation', desc: 'Live a day in a role before you pick it.', icon: '/pixel-icons/iconbriefcase.svg', path: '/career-simulation' },
-  { title: 'Instinct Swipe', desc: 'Quick gut calls, no overthinking.', icon: '/pixel-icons/iconwrench.svg', path: '/instinct-swipe' },
-  { title: 'Data Detective', desc: 'Follow the clues hidden in the numbers.', icon: '/pixel-icons/iconchart.svg', path: '/data-detective' },
+  { title: 'Memory Match', desc: 'Test how sharply you recall details.', icon: 'book', path: '/memory-game' },
+  { title: 'Pattern Hunter', desc: 'Spot the logic hiding in a sequence.', icon: 'chart', path: '/pattern-hunter' },
+  { title: 'Decision Lab', desc: 'Trade-offs under pressure, gamified.', icon: 'scales', path: '/decision-lab' },
+  { title: 'Career Simulation', desc: 'Live a day in a role before you pick it.', icon: 'briefcase', path: '/career-simulation' },
+  { title: 'Instinct Swipe', desc: 'Quick gut calls, no overthinking.', icon: 'wrench', path: '/instinct-swipe' },
+  { title: 'Data Detective', desc: 'Follow the clues hidden in the numbers.', icon: 'chart', path: '/data-detective' },
 ]
 
 const compareQuiz = [
@@ -35,7 +36,7 @@ export default function LandingPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: .55 }}
           >
-            <div className="pixel-label" style={{ color: '#E8C95A' }}>✦ Not a quiz. A playground.</div>
+            <div className="pixel-label" style={{ color: '#E8C95A' }}><PixelIcon name="spark" size={14} /> Not a quiz. A playground.</div>
             <div className="pixel-kicker" style={{ marginTop: 18 }}>Career discovery / playable</div>
             <h1 className="pixel-title">
               Find your path by <span className="accent">playing,</span> not filling bubbles.
@@ -44,7 +45,7 @@ export default function LandingPage() {
               Pehchaan replaces long career questionnaires with short interactive games that notice how you remember, solve, decide, create and adapt.
             </p>
             <div className="pixel-hero-actions">
-              <Link to="/start" className="pixel-button light">Play the Games →</Link>
+              <Link to="/start" className="pixel-button light">Play the Games</Link>
               <a href="#how-it-works" className="pixel-button ghost">See how it works</a>
             </div>
             <div className="pixel-proof">Zero multiple choice. Zero score-bashing. Just signals.</div>
@@ -60,8 +61,8 @@ export default function LandingPage() {
             <span className="pixel-float one">+1 badge earned!</span>
             <span className="pixel-float two">Explore →</span>
             <span className="pixel-float three">▣ traits</span>
-            <div className="pixel-spark" style={{ position:'absolute', left:22, top:24 }}>✦</div>
-            <div className="pixel-spark" style={{ position:'absolute', right:34, top:38 }}>✦</div>
+            <div className="pixel-spark" style={{ position:'absolute', left:22, top:24 }}><PixelIcon name="spark" size={18} /></div>
+            <div className="pixel-spark" style={{ position:'absolute', right:34, top:38 }}><PixelIcon name="spark" size={18} /></div>
             <div className="pixel-explorer" aria-hidden="true">
               <span className="hair" />
               <span className="head" />
@@ -101,7 +102,7 @@ export default function LandingPage() {
               <div className="pixel-label" style={{color:'#E8C95A'}}>Pehchaan</div>
               <h3 style={{margin:'18px 0 6px', fontSize:24}}>9 short mini-games</h3>
               <div className="pixel-list">
-                {comparePehchaan.map(item => <div className="pixel-list-row" key={item}><span className="pixel-check">✓</span><span>{item}</span></div>)}
+                {comparePehchaan.map(item => <div className="pixel-list-row" key={item}><span className="pixel-check"><PixelIcon name="check" size={18} /></span><span>{item}</span></div>)}
               </div>
               <div style={{marginTop:22, height:12, background:'#123B2A', border:'2px solid #062A1F'}}><div style={{width:'72%', height:'100%', background:'#F3A6B8'}} /></div>
               <small style={{display:'block', marginTop:8, color:'#AFC1B6'}}>Every tap teaches the model something real.</small>
@@ -117,10 +118,10 @@ export default function LandingPage() {
           <div className="pixel-games">
             {games.map(game => (
               <Link key={game.path} to={game.path} className="pixel-game-card">
-                <span className="pixel-game-icon"><img src={game.icon} alt="" /></span>
+                <span className="pixel-game-icon"><PixelIcon name={game.icon} size={38} /></span>
                 <span className="pixel-game-title">{game.title}</span>
                 <span className="pixel-game-desc">{game.desc}</span>
-                <span className="pixel-game-arrow">Open game →</span>
+                <span className="pixel-game-arrow">Open game</span>
               </Link>
             ))}
           </div>
@@ -146,7 +147,7 @@ export default function LandingPage() {
             ))}
           </div>
           <div style={{marginTop:34}}>
-            <Link to="/start" className="pixel-button">Start your first run →</Link>
+            <Link to="/start" className="pixel-button">Start your first run</Link>
           </div>
         </div>
       </section>

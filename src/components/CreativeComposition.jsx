@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import { useSession } from '../store/SessionContext'
 import { recordResponse, updateSessionProgress } from '../services/db'
+import PixelIcon from './PixelIcon'
 import { useNavigate } from 'react-router-dom'
 
 const PROMPT = {
   title: 'Creative Composition',
-  emoji: '🎨',
+  icon: 'palette',
   instruction: 'Look at this scene in your mind: a deserted coastal town at dusk, the last fishing boats returning, an old lighthouse flickering. In 4–6 sentences, describe what you see, hear, and feel — and what story this place is silently telling.',
   placeholder: 'Begin your description here...',
   minLength: 60,
@@ -78,7 +79,7 @@ export default function CreativeComposition() {
       <div className="flex flex-col items-center p-10 bg-soft-white rounded-[32px] shadow-2xl border border-border-glass max-w-2xl w-full mx-auto">
         {/* Header */}
         <div className="flex items-center gap-3 mb-2">
-          <span className="text-4xl">{PROMPT.emoji}</span>
+          <PixelIcon name={PROMPT.icon} size={42} />
           <h2 className="text-3xl font-medium tracking-tight">{PROMPT.title}</h2>
         </div>
         <p className="text-xs uppercase tracking-widest text-text-muted mb-8 font-semibold">

@@ -3,18 +3,19 @@ import { motion } from 'framer-motion'
 import { useSession } from '../store/SessionContext'
 import { useNavigate } from 'react-router-dom'
 import { recordResponse } from '../services/db'
+import PixelIcon from './PixelIcon'
 
 const INTEREST_CATEGORIES = [
-  { id: 'arts', icon: '/pixel-icons/iconpalette.svg', label: 'Arts & Creative' },
-  { id: 'architecture', icon: '/pixel-icons/iconbuilding.svg', label: 'Architecture & Design' },
-  { id: 'languages', icon: '/pixel-icons/iconbook.svg', label: 'Languages & Lit' },
-  { id: 'technology', icon: '/pixel-icons/iconcalculator.svg', label: 'Tech & Computing' },
-  { id: 'medicine', icon: '/pixel-icons/iconheart.svg', label: 'Medicine & Life Sci' },
-  { id: 'science', icon: '/pixel-icons/iconflask.svg', label: 'Science & Research' },
-  { id: 'business', icon: '/pixel-icons/iconchart.svg', label: 'Business & Finance' },
-  { id: 'psychology', icon: '/pixel-icons/iconusers.svg', label: 'Psychology' },
-  { id: 'law', icon: '/pixel-icons/iconscales.svg', label: 'Law & Public Policy' },
-  { id: 'engineering', icon: '/pixel-icons/iconhammer.svg', label: 'Engineering' },
+  { id: 'arts', icon: 'palette', label: 'Arts & Creative' },
+  { id: 'architecture', icon: 'building', label: 'Architecture & Design' },
+  { id: 'languages', icon: 'book', label: 'Languages & Lit' },
+  { id: 'technology', icon: 'calculator', label: 'Tech & Computing' },
+  { id: 'medicine', icon: 'heart', label: 'Medicine & Life Sci' },
+  { id: 'science', icon: 'flask', label: 'Science & Research' },
+  { id: 'business', icon: 'chart', label: 'Business & Finance' },
+  { id: 'psychology', icon: 'users', label: 'Psychology' },
+  { id: 'law', icon: 'scales', label: 'Law & Public Policy' },
+  { id: 'engineering', icon: 'hammer', label: 'Engineering' },
 ]
 
 const CAREER_VALUES = [
@@ -141,7 +142,7 @@ export default function OnboardingFlow() {
                         : 'bg-ivory border border-border-glass text-green-dark hover:bg-green-primary/5 hover:border-green-primary/30'
                     }`}
                   >
-                    <span className="pixel-game-icon" style={{ width: 54, height: 54, marginBottom: 10 }}><img src={cat.icon} alt="" style={{ width: 34, height: 34, imageRendering: 'pixelated' }} /></span>
+                    <span className="pixel-game-icon" style={{ width: 54, height: 54, marginBottom: 10 }}><PixelIcon name={cat.icon} size={34} /></span>
                     <span className="text-sm font-medium text-center">{cat.label}</span>
                   </button>
                 )
@@ -180,7 +181,7 @@ export default function OnboardingFlow() {
             onClick={handleNext}
             className="bg-green-primary text-ivory px-8 py-3 rounded-full font-medium hover:bg-green-dark transition-colors shadow-md"
           >
-            {step < 2 ? 'Next →' : 'Start Exploring 🚀'}
+            {step < 2 ? 'Next' : 'Start Exploring'}
           </button>
         </div>
       </motion.div>

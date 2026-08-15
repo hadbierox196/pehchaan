@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import PixelIcon from './PixelIcon'
 
 export default function Navbar() {
   const [open, setOpen] = useState(false)
@@ -13,7 +14,7 @@ export default function Navbar() {
     <nav className={`pixel-nav ${open ? 'mobile-open' : ''}`} aria-label="Primary navigation">
       <div className="pixel-nav-inner">
         <Link to="/" className="pixel-brand" onClick={close}>
-          <span className="pixel-brand-mark" aria-hidden="true">✦</span>
+          <span className="pixel-brand-mark" aria-hidden="true"><PixelIcon name="spark" size={22} /></span>
           <span className="pixel-brand-name">PEHCHAAN</span>
         </Link>
 
@@ -25,7 +26,7 @@ export default function Navbar() {
         </div>
 
         <Link to="/start" className="pixel-nav-start" onClick={() => setOpen(false)}>
-          Start →
+          Start
         </Link>
 
         <button
@@ -35,7 +36,7 @@ export default function Navbar() {
           aria-expanded={open}
           onClick={() => setOpen(v => !v)}
         >
-          {open ? '×' : '☰'}
+          {open ? <PixelIcon name="close" size={22} /> : <PixelIcon name="menu" size={22} />}
         </button>
       </div>
     </nav>

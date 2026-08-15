@@ -204,7 +204,7 @@ export default function DataDetective() {
               showHint ? 'border-border-glass text-text-muted' : 'border-green-secondary text-green-secondary hover:bg-green-secondary hover:text-ivory'
             }`}
           >
-            {showHint ? "Hint Used" : "💡 Need a hint?"}
+            {showHint ? "Hint Used" : "Need a hint?"}
           </button>
           
           <AnimatePresence>

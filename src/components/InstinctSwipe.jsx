@@ -3,42 +3,28 @@ import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-mo
 import { useSession } from '../store/SessionContext'
 import { recordResponse } from '../services/db'
 import { useNavigate } from 'react-router-dom'
+import PixelIcon from './PixelIcon'
 
 // 18 cards, 3 per RIASEC letter, each with weights that accumulate
-const iconFor = (emoji) => ({
-  '🔧': '/pixel-icons/iconwrench.svg', '🏗️': '/pixel-icons/iconbuilding.svg', '⛏️': '/pixel-icons/iconhammer.svg',
-  '📊': '/pixel-icons/iconchart.svg', '🔬': '/pixel-icons/iconflask.svg', '📝': '/pixel-icons/icondocument.svg',
-  '🎨': '/pixel-icons/iconpalette.svg', '✍️': '/pixel-icons/icondocument.svg', '🎬': '/pixel-icons/iconfilm.svg',
-  '🤝': '/pixel-icons/iconusers.svg', '💚': '/pixel-icons/iconheart.svg', '📚': '/pixel-icons/iconbook.svg',
-  '📣': '/pixel-icons/iconcrown.svg', '👑': '/pixel-icons/iconcrown.svg', '💰': '/pixel-icons/iconcalculator.svg',
-  '🗂️': '/pixel-icons/icondatabase.svg', '🧾': '/pixel-icons/icondocument.svg', '📋': '/pixel-icons/iconspreadsheet.svg',
-}[emoji] || '/pixel-icons/icongraduation.svg')
-
 const CARDS = [
-  // Realistic (R)
-  { id: 1, text: "Fix a broken machine or engine", emoji: "🔧", weights: { R: 0.9, I: 0.2 } },
-  { id: 2, text: "Build something with your hands", emoji: "🏗️", weights: { R: 0.8, C: 0.1 } },
-  { id: 3, text: "Work outdoors on a construction site", emoji: "⛏️", weights: { R: 0.7, E: 0.1 } },
-  // Investigative (I)
-  { id: 4, text: "Analyze a complex dataset to find patterns", emoji: "📊", weights: { I: 0.9, C: 0.3 } },
-  { id: 5, text: "Conduct a science experiment", emoji: "🔬", weights: { I: 0.8, R: 0.1 } },
-  { id: 6, text: "Research and write a technical report", emoji: "📝", weights: { I: 0.7, C: 0.3 } },
-  // Artistic (A)
-  { id: 7, text: "Design a poster or visual artwork", emoji: "🎨", weights: { A: 0.9, E: 0.2 } },
-  { id: 8, text: "Write a short story or poem", emoji: "✍️", weights: { A: 0.8, I: 0.2 } },
-  { id: 9, text: "Direct a short film or music video", emoji: "🎬", weights: { A: 0.7, E: 0.3 } },
-  // Social (S)
-  { id: 10, text: "Help a classmate who is struggling", emoji: "🤝", weights: { S: 0.9, A: 0.2 } },
-  { id: 11, text: "Volunteer at a community event", emoji: "💚", weights: { S: 0.8, E: 0.2 } },
-  { id: 12, text: "Teach someone a new skill", emoji: "📚", weights: { S: 0.7, C: 0.1 } },
-  // Enterprising (E)
-  { id: 13, text: "Pitch a business idea to investors", emoji: "📣", weights: { E: 0.9, S: 0.3 } },
-  { id: 14, text: "Lead a project and delegate tasks", emoji: "👑", weights: { E: 0.8, C: 0.2 } },
-  { id: 15, text: "Negotiate the best deal in a transaction", emoji: "💰", weights: { E: 0.7, R: 0.1 } },
-  // Conventional (C)
-  { id: 16, text: "Organize files and create a database", emoji: "🗂️", weights: { C: 0.9, R: 0.2 } },
-  { id: 17, text: "Audit financial records for errors", emoji: "🧾", weights: { C: 0.8, I: 0.3 } },
-  { id: 18, text: "Create a detailed spreadsheet plan", emoji: "📋", weights: { C: 0.7, I: 0.2 } },
+  { id: 1, text: "Fix a broken machine or engine", icon: 'wrench', weights: { R: 0.9, I: 0.2 } },
+  { id: 2, text: "Build something with your hands", icon: 'building', weights: { R: 0.8, C: 0.1 } },
+  { id: 3, text: "Work outdoors on a construction site", icon: 'hammer', weights: { R: 0.7, E: 0.1 } },
+  { id: 4, text: "Analyze a complex dataset to find patterns", icon: 'chart', weights: { I: 0.9, C: 0.3 } },
+  { id: 5, text: "Conduct a science experiment", icon: 'flask', weights: { I: 0.8, R: 0.1 } },
+  { id: 6, text: "Research and write a technical report", icon: 'document', weights: { I: 0.7, C: 0.3 } },
+  { id: 7, text: "Design a poster or visual artwork", icon: 'palette', weights: { A: 0.9, E: 0.2 } },
+  { id: 8, text: "Write a short story or poem", icon: 'document', weights: { A: 0.8, I: 0.2 } },
+  { id: 9, text: "Direct a short film or music video", icon: 'film', weights: { A: 0.7, E: 0.3 } },
+  { id: 10, text: "Help a classmate who is struggling", icon: 'users', weights: { S: 0.9, A: 0.2 } },
+  { id: 11, text: "Volunteer at a community event", icon: 'heart', weights: { S: 0.8, E: 0.2 } },
+  { id: 12, text: "Teach someone a new skill", icon: 'book', weights: { S: 0.7, C: 0.1 } },
+  { id: 13, text: "Pitch a business idea to investors", icon: 'crown', weights: { E: 0.9, S: 0.3 } },
+  { id: 14, text: "Lead a project and delegate tasks", icon: 'crown', weights: { E: 0.8, C: 0.2 } },
+  { id: 15, text: "Negotiate the best deal in a transaction", icon: 'calculator', weights: { E: 0.7, R: 0.1 } },
+  { id: 16, text: "Organize files and create a database", icon: 'database', weights: { C: 0.9, R: 0.2 } },
+  { id: 17, text: "Audit financial records for errors", icon: 'document', weights: { C: 0.8, I: 0.3 } },
+  { id: 18, text: "Create a detailed spreadsheet plan", icon: 'spreadsheet', weights: { C: 0.7, I: 0.2 } },
 ]
 
 export default function InstinctSwipe() {
@@ -165,10 +151,10 @@ export default function InstinctSwipe() {
             className="absolute inset-0 rounded-[32px] border border-border-glass shadow-2xl cursor-grab active:cursor-grabbing flex flex-col items-center justify-center p-10 select-none"
           >
             {/* Like/Dislike Overlays */}
-            <motion.div style={{ opacity: likeOpacity }} className="absolute top-6 left-6 text-green-600 font-bold text-xl border-2 border-green-600 rounded-xl px-3 py-1 rotate-[-15deg]">LIKE ✓</motion.div>
-            <motion.div style={{ opacity: dislikeOpacity }} className="absolute top-6 right-6 text-red-500 font-bold text-xl border-2 border-red-500 rounded-xl px-3 py-1 rotate-[15deg]">SKIP ✗</motion.div>
+            <motion.div style={{ opacity: likeOpacity }} className="pixel-swipe-stamp like"><PixelIcon name="check" size={18} /> LIKE</motion.div>
+            <motion.div style={{ opacity: dislikeOpacity }} className="pixel-swipe-stamp skip"><PixelIcon name="cross" size={18} /> SKIP</motion.div>
 
-            <div className="pixel-game-icon" style={{ width: 88, height: 88, marginBottom: 20 }}><img src={iconFor(card.emoji)} alt="" style={{ width: 54, height: 54, imageRendering: 'pixelated' }} /></div>
+            <div className="pixel-game-icon" style={{ width: 88, height: 88, marginBottom: 20 }}><PixelIcon name={card.icon} size={54} /></div>
             <p className="text-xl font-medium text-center leading-relaxed text-green-dark">{card.text}</p>
           </motion.div>
         </AnimatePresence>
@@ -179,11 +165,11 @@ export default function InstinctSwipe() {
         <button 
           onClick={() => handleSwipe(false)}
           className="w-16 h-16 bg-soft-white border-2 border-[#7F2439] text-[#7F2439] text-2xl shadow-md hover:bg-[#F3A6B8] transition-colors"
-        >✗</button>
+        ><PixelIcon name="cross" size={24} /></button>
         <button 
           onClick={() => handleSwipe(true)}
           className="w-16 h-16 bg-green-primary text-ivory border-2 border-green-deepest text-2xl shadow-md hover:bg-green-dark transition-colors"
-        >✓</button>
+        ><PixelIcon name="check" size={24} /></button>
       </div>
     </div>
   )

@@ -130,7 +130,7 @@ export default function LearningAgility() {
           <div className="space-y-6">
             <p className="text-lg text-text-muted">Great. Now, a new rule is introduced:</p>
             <div className="bg-ivory rounded-2xl p-6 border border-green-primary/10 text-xl font-mono text-left space-y-4 max-w-sm mx-auto">
-              <p><span className="text-purple-500">★</span> means <b>Square the number</b> (multiply by itself)</p>
+              <p><span className="pixel-math-token">*</span> means <b>Square the number</b> (multiply by itself)</p>
             </div>
             <button onClick={() => setPhase('test')} className="bg-green-primary text-ivory px-8 py-4 rounded-full font-medium hover:bg-green-dark transition-colors shadow-md w-full">
               Continue
