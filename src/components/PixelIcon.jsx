@@ -42,7 +42,7 @@ export default function PixelIcon({ name = 'spark', size = 32, className = '', t
       case 'target': return <><circle cx="16" cy="16" r="12" fill={C.cream} stroke={C.ink} strokeWidth="2.5"/><circle cx="16" cy="16" r="7" fill={C.pink} stroke={C.ink} strokeWidth="2.5"/><circle cx="16" cy="16" r="2.5" fill={C.green}/></>
       case 'check': return <path d="m6 17 6 6 14-15" stroke={C.green} strokeWidth="4" fill="none"/>
       case 'cross': return <path d="m7 7 18 18M25 7 7 25" stroke={C.pink} strokeWidth="4"/>
-      case 'warning': return <path d="M16 4 29 27H3z" fill={C.gold} stroke={C.ink} strokeWidth="2.5"/><path d="M16 11v8M16 23v1" stroke={C.ink} strokeWidth="3"/>
+      case 'warning': return <><path d="M16 4 29 27H3z" fill={C.gold} stroke={C.ink} strokeWidth="2.5"/><path d="M16 11v8M16 23v1" stroke={C.ink} strokeWidth="3"/></>
       case 'menu': return <path d="M5 8h22M5 16h22M5 24h22" stroke={C.cream} strokeWidth="3"/>
       case 'close': return <path d="m7 7 18 18M25 7 7 25" stroke={C.cream} strokeWidth="3"/>
       case 'back': return <><path d="M27 16H6M6 16l8-8M6 16l8 8" stroke={C.green} strokeWidth="3"/></>
