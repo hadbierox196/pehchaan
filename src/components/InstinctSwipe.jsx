@@ -109,8 +109,8 @@ export default function InstinctSwipe() {
   const progress = ((current) / CARDS.length) * 100
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-ivory text-green-dark p-6 relative overflow-hidden">
-      <div className="absolute top-6 left-6">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-ivory text-green-dark pt-24 px-6 pb-6 relative overflow-hidden">
+      <div className="absolute top-6 left-6 z-20">
         <button onClick={() => navigate('/')} className="text-green-secondary hover:text-green-dark font-medium flex items-center gap-2">
           ← Back to Home
         </button>

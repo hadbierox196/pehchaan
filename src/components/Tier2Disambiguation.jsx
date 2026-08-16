@@ -350,10 +350,10 @@ export default function Tier2Disambiguation() {
   const q = cluster.questions[current]
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-ivory text-green-dark p-6 relative overflow-hidden">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-ivory text-green-dark pt-24 px-6 pb-6 relative overflow-hidden">
 
       {/* Back */}
-      <div className="absolute top-6 left-6">
+      <div className="absolute top-6 left-6 z-20">
         <button
           onClick={() => navigate('/results')}
           className="text-green-secondary hover:text-green-dark font-medium flex items-center gap-2 text-sm"

@@ -195,7 +195,11 @@ input::placeholder, textarea::placeholder { color: #6F8077; }
   text-align: center;
   letter-spacing: .08em;
   text-transform: uppercase;
+  min-height: 26px;
 }
+/* Pushes page content down so the fixed ribbon above never overlaps
+   top-anchored elements like the back button on activity screens */
+.offline-ribbon-spacer { padding-top: 26px; }
 
 /* Landing page */
 .pixel-landing {

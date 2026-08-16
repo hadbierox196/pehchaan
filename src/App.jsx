@@ -33,6 +33,7 @@ function App() {
         {!isOnline && (
           <div className="offline-ribbon">Offline Mode Active</div>
         )}
+        <div className={!isOnline ? 'offline-ribbon-spacer' : undefined}>
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/start" element={<OnboardingFlow />} />
@@ -56,6 +57,7 @@ function App() {
           <Route path="/results" element={<ResultsScreen />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        </div>
       </Router>
     </SessionProvider>
   )
